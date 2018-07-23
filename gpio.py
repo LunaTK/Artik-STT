@@ -31,3 +31,12 @@ class GPIO:
             pin.write(str(value).encode())
         except:
             pass
+
+    def read_value(self):
+        pin = open('/sys/class/gpio/gpio%d/value' % self.pinnum, 'rb', 0)
+        data = None
+        try:
+            data = pin.read().decode()
+        except:
+            pass
+        return data
